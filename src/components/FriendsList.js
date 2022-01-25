@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 // import Loader from "react-loader-spinner";
 import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 class FriendsList extends React.Component {
     state = {
@@ -9,14 +10,9 @@ class FriendsList extends React.Component {
     };
 
     componentDidMount() {
-        const token = localStorage.getItem('token');
-        axios.get('http://localhost:9000/api/friends', {
-            headers: {
-                authorization: token
-            }
-        })
+        axiosWithAuth()
+        .get('/friends')
         .then(resp=> {
-            console.log(resp.data);
             this.setState({
                 friendsList: resp.data
             });
@@ -33,10 +29,8 @@ class FriendsList extends React.Component {
                 <div className="list">
                     {friendsList.map(friend => (
                         <div key={friend.id} className="friend">
-                            <div className="friend-username">
-                                <p>{friend.name}</p>
-                            </div>
-                            <div className="friend-email">
+                            <div>
+                                <p>-{friend.name}: </p>
                                 <p>{friend.email}</p>
                             </div>
                         </div>
