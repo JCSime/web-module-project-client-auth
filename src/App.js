@@ -4,24 +4,23 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
 import Logout from './components/Logout';
+import AddFriend from './components/AddFriends';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <ul>
-          <li>
+        <header>
+          <h1>Friends Project</h1>
+        </header>
+        <div className='nav-bar'>
             <Link to='/login'>Login</Link>
-          </li>
-          <li>
             <Link to='/friendsList'>Friends List</Link>
-          </li>
-          <li>
+            <Link to='/addFriend'>Add Friend</Link>
             <Link to='/logout'>Logout</Link>
-          </li>
-        </ul>
-        <h2>Client Auth Project</h2>
+        </div>
         <Switch>
+          <Route path='/addFriend' component={AddFriend} />
           <Route path='/friendsList' component={FriendsList} />
           <Route path='/logout' component={Logout} />
           <Route path='/login' component={Login} />

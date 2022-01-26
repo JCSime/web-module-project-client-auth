@@ -1,7 +1,4 @@
 import React from "react";
-import moment from "moment";
-// import Loader from "react-loader-spinner";
-import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 class FriendsList extends React.Component {
@@ -23,9 +20,7 @@ class FriendsList extends React.Component {
         const friendsList = this.state.friendsList;
         return (
             <div className="friends-list-container">
-                <div className="title">
-                    <h1>FRIENDS LIST</h1>
-                </div>
+                    <h2>Friends List</h2>
                 <div className="list">
                     {friendsList.map(friend => (
                         <div key={friend.id} className="friend">
